@@ -1,0 +1,20 @@
+
+//Proof the not instruction does
+//jack shit to immediate values.
+mov r0, 0xFF
+mov r1, 0xCCCC
+mov r2, 0xFF
+mov r5, 0x1
+not r0, r0, 0xA0
+not r1, r1, r2
+not r3, r1, r5
+
+//Undocumented behavior of the clr/set
+//instruction when using the form
+//clr/set REG REG REG. It is of the form
+//dst <- src & bit where the last reg
+//stores the number of a single bit to
+//set or clear.
+mov r1, 0xFF
+mov r2, 0x2
+clr r3, r1, r2

@@ -1,0 +1,13 @@
+{
+	"name": "pruss",
+	"version": "0.1.0",
+	"author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
+	"description": "PRU userland driver for BeagleBone.",
+	"main": "lib/pruss.js",
+	"dependencies": {
+		"mmap": "^2.0.2"
+	},
+	"devDependencies": {
+		"mocha": "^2.0.1"
+	}
+}
