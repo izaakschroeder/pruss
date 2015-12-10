@@ -1,4 +1,6 @@
 
+'use strict';
+
 describe('clr', function() {
 	describe('clr r3, r1, r2', check('clr', 0x1ce2e1e3, { dst: S.r3, srcA: S.r1, srcB: S.r2 }));
 	describe('clr r1.b1, r1.b0, 5', check('clr', 0x1d050121, { dst: S.r1.b1, src: S.r1.b0, imm: 5 }));

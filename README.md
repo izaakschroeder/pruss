@@ -74,3 +74,5 @@ You can verify the PRUSS subsystem is loaded by searching for it under platform 
 ```bash
 ls /sys/bus/platform/devices/ | grep pruss # Should see 4a300000.pruss or similar
 ```
+
+[Instruction Reference]: http://processors.wiki.ti.com/index.php/PRU_Assembly_Instructions

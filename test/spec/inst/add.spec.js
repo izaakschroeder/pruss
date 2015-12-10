@@ -1,4 +1,6 @@
 
+'use strict';
+
 describe('add', function() {
 	describe('add r0, r0, #0xCC', check('add', 0x01cce0e0, { dst: S.r0, src: S.r0, imm: 0xCC }));
 	describe('add r1, r0, #0x90', check('add', 0x0190e0e1, { dst: S.r1, src: S.r0, imm: 0x90 }));

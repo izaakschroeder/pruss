@@ -1,13 +1,30 @@
 {
 	"name": "pruss",
 	"version": "0.1.0",
-	"author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
 	"description": "PRU userland driver for BeagleBone.",
-	"main": "lib/pruss.js",
+	"author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
+	"keywords": [ "beaglebone", "pru", "pruss" ],
+	"license": "CC0-1.0",
+	"homepage": "https://github.com/izaakschroeder/pruss",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/izaakschroeder/pruss.git"
+	},
+	"scripts": {
+		"lint": "./node_modules/.bin/eslint --ignore-path .gitignore .",
+		"prepublish": "./node_modules/.bin/babel ./src -d dist",
+		"test": "npm run lint"
+	},
+	"main": "dist/index.js",
 	"dependencies": {
-		"mmap": "^2.0.2"
+		"mmap-io": "^0.9.4"
 	},
 	"devDependencies": {
-		"mocha": "^2.0.1"
-	}
+    "babel-cli": "^6.0.2",
+    "babel-preset-metalab": "^0.1.2",
+    "chai": "^3.4.0",
+    "eslint": "^1.8.0",
+    "eslint-config-metalab": "^1.0.0-rc.1",
+    "mocha": "^2.2.5"
+  }
 }
