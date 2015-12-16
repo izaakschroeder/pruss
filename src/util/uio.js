@@ -4,8 +4,6 @@ import mmap from 'mmap-io';
 import EventEmitter from 'events';
 
 export default class UIO extends EventEmitter {
-  static pageSize = 4096;
-
   constructor(id) {
     super();
     this.id = id;
@@ -30,7 +28,7 @@ export default class UIO extends EventEmitter {
 
   map(id) {
     const base = `/sys/class/uio/uio${this.id}/maps/map${id}`;
-    const size = readFileSync(`${base}/size`);
+    const size = parseInt(readFileSync(`${base}/size`).toString('ascii'), 16);
     const addr = parseInt(readFileSync(`${base}/addr`).toString('ascii'), 16);
     const data = mmap.map(
       size,

@@ -2,18 +2,16 @@
 import { readFileSync } from 'fs';
 
 export default class PRU {
-  constructor(control, debug, ram, data, l3) {
-    this._control = control;
-    this._registers = debug;
+  constructor(control, registers, ram, data, l3) {
+    this._registers = registers;
     this._ram = ram;
     this.data = data;
     this.l3 = l3;
+    this.control = control;
     this.enabled = false;
     this.singleStep = false;
     this.startAddress = 0x0;
     this.reset();
-    this.registers = new Uint32Array(this._registers);
-    this.control = new Uint32Array(this._control);
   }
 
   break() {
@@ -61,8 +59,7 @@ export default class PRU {
   load(program) {
     if (this.running) {
       throw new TypeError('Cannot load new programs while PRU is running.');
-    }
-    if (Buffer.isBuffer(program)) {
+    } else if (Buffer.isBuffer(program)) {
       if (program.length % 4 !== 0) {
         throw new TypeError('Invalid number of instructions.');
       }
@@ -70,8 +67,9 @@ export default class PRU {
       this.ram.fill(0, program.length);
     } else if (typeof program === 'string') {
       this.load(readFileSync(program));
+    } else {
+      throw new TypeError('Invalid program.');
     }
-    throw new TypeError('Invalid program.');
   }
 
   run(program) {
@@ -160,5 +158,12 @@ export default class PRU {
       throw new TypeError('Cannot access IRAM while running.');
     }
     return this._ram;
+  }
+
+  get registers() {
+    if (this.running) {
+      throw new TypeError('Cannot access IRAM while running.');
+    }
+    return this._registers;
   }
 }

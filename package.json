@@ -1,6 +1,6 @@
 {
 	"name": "pruss",
-	"version": "0.1.0",
+	"version": "0.1.5",
 	"description": "PRU userland driver for BeagleBone.",
 	"author": "Izaak Schroeder <izaak.schroeder@gmail.com>",
 	"keywords": [ "beaglebone", "pru", "pruss" ],
